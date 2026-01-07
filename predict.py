@@ -161,20 +161,6 @@ if __name__ == "__main__":
     except:
         print("Label encoder file not found. Creating from dataset...")
 
-        # Recreate from training data
-        train_dir = "Dataset/train"
-        train_images = glob.glob(os.path.join(train_dir, '*.jpg'))
-        train_labels = [x.split(os.sep)[-1].split('.')[0]
-                        for x in train_images]
-        train_targets = [[c for c in x] for x in train_labels]
-        targets_flat = [c for clist in train_targets for c in clist]
-
-        lbl_enc = preprocessing.LabelEncoder()
-        lbl_enc.fit(targets_flat)
-
-        # Save for future use
-        save_label_encoder(lbl_enc, LABEL_ENCODER_PATH)
-
     # ========== Load model ==========
     print(f"\nLoading model from {MODEL_PATH}...")
     model = load_model(MODEL_PATH, lbl_enc, DEVICE)
@@ -240,3 +226,45 @@ if __name__ == "__main__":
     print("\nTo predict your own image:")
     print("  prediction = predict_single_image('path/to/image.jpg', model, lbl_enc, DEVICE)")
     print("  print(f'Predicted: {prediction}')")
+'''
+Label encoder loaded from label_encoder.pkl
+
+Loading model from best_captcha_model.pth...
+Model loaded successfully on cpu
+Number of character classes: 60
+
+======================================================================
+EXAMPLE 1: Single Image Prediction
+======================================================================
+Test image not found: Dataset/val/8AE5T.jpg
+
+======================================================================
+EXAMPLE 2: Batch Prediction
+======================================================================
+
+Predicting 10 images...
+
+Results:
+----------------------------------------------------------------------
+Image: 8a3T3.jpg            | Pred: 8a3T3      | Actual: 8a3T3      | ✓
+Image: 8a8kr.jpg            | Pred: 8d8k       | Actual: 8a8kr      | ✗
+Image: 8aGBh.jpg            | Pred: 8aGBh      | Actual: 8aGBh      | ✓
+Image: 8agUl.jpg            | Pred: 8ACUL      | Actual: 8agUl      | ✗
+Image: 8aMUi.jpg            | Pred: 8AMUl      | Actual: 8aMUi      | ✗
+Image: 8ar4T.jpg            | Pred: 8ar1T      | Actual: 8ar4T      | ✗
+Image: 8arDi.jpg            | Pred: 8arDi      | Actual: 8arDi      | ✓
+Image: 8aUUx.jpg            | Pred: 8aUX       | Actual: 8aUUx      | ✗
+Image: 8aZhr.jpg            | Pred: 8aZhr      | Actual: 8aZhr      | ✓
+Image: 8bAr6.jpg            | Pred: 8bAr6      | Actual: 8bAr6      | ✓
+----------------------------------------------------------------------
+Accuracy: 5/10 = 50.00%
+
+======================================================================
+EXAMPLE 3: Custom Image Prediction
+======================================================================
+
+To predict your own image:
+  prediction = predict_single_image('path/to/image.jpg', model, lbl_enc, DEVICE)
+  print(f'Predicted: {prediction}')
+
+'''
