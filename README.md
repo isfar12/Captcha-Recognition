@@ -235,7 +235,7 @@ Below are example screenshots of the Web UI in action:
 
 |      Prediction1 CAPTCHA       |       Prediction2 Result       |
 | :----------------------------: | :----------------------------: |
-| ![Upload Demo](Demo/demo1.png) | ![Result Demo](Demo/demo2.png) |
+| ![Upload Demo](demo/demo1.png) | ![Result Demo](demo/demo2.png) |
 
 ## 📈 Results
 
