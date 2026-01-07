@@ -4,17 +4,19 @@ A deep learning-based CAPTCHA recognition system using PyTorch that achieves aut
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Model Architecture](#model-architecture)
-- [Dataset](#dataset)
-- [Installation](#installation)
-- [Project Structure](#project-structure)
-- [Usage](#usage)
-- [Results](#results)
-- [Technical Details](#technical-details)
-- [Requirements](#requirements)
-- [License](#license)
+- [Overview](#-overview)
+- [Features](#-features)
+- [Model Architecture](#-model-architecture)
+- [Dataset](#-dataset)
+- [Installation](#-installation)
+- [Project Structure](#-project-structure)
+- [Usage](#-usage)
+- [Web UI](#-web-ui)
+- [Demo](#-demo)
+- [Results](#-results)
+- [Technical Details](#-technical-details)
+- [Requirements](#-requirements)
+- [License](#-license)
 
 ## 🎯 Overview
 
@@ -205,6 +207,35 @@ predictions = predict_batch(image_paths, model, lbl_enc, DEVICE, batch_size=8)
 ```bash
 python predict.py
 ```
+
+## 🌐 Web UI
+
+A user-friendly web interface is provided using [Streamlit](https://streamlit.io/). This allows you to upload a CAPTCHA image and get instant predictions from the trained model.
+
+### How to Run the Web UI
+
+1. Make sure you have installed all requirements (see Installation section).
+2. From the project root, run:
+
+```bash
+streamlit run WebUI/streamlit.py
+```
+
+3. The app will open in your browser. Upload a CAPTCHA image to see the prediction.
+
+**Note:** If you run from the root, use the path above. If you run from inside the `WebUI` folder, use:
+
+```bash
+streamlit run streamlit.py
+```
+
+## 🖼️ Demo
+
+Below are example screenshots of the Web UI in action:
+
+|      Prediction1 CAPTCHA       |       Prediction2 Result       |
+| :----------------------------: | :----------------------------: |
+| ![Upload Demo](Demo/demo1.png) | ![Result Demo](Demo/demo2.png) |
 
 ## 📈 Results
 
